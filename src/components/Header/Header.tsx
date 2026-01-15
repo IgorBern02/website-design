@@ -1,5 +1,5 @@
-import { listHeaderItems } from "./list-header-items/ListHeaderItems";
-import { MenuHamburguer } from "./menu-hamburguer/MenuHamburguer";
+import { listHeaderItems } from "./Navitems";
+import { MenuHamburguer } from "./MenuHamburguer";
 
 type HeaderProps = {
   text_up: string;
