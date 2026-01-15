@@ -6,9 +6,15 @@
   font-family: Arial, sans-serif;
 } */
 @import "tailwindcss";
-
-@import "tailwindcss";
+@font-face {
+  font-family: Poppins;
+  src: url("/src/assets/fonts/Poppins-Regular.ttf");
+}
 
 :root {
   --color-dark: 31 41 55;
+}
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
 }

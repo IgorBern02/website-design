@@ -6,7 +6,6 @@ function App() {
   return (
     <div>
       <Header title="Website Design" />
-      <img src={backgtround} alt="Background" />
     </div>
   );
 }

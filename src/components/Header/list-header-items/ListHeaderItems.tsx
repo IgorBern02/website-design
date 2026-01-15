@@ -6,7 +6,7 @@ export const listHeaderItems = () => (
       {ListItems.map((item, index) => (
         <li
           key={index}
-          className=" cursor-pointer  p-2 rounded-md  hover:bg-gray-700"
+          className="font-poppins text-sm cursor-pointer p-2 rounded-md hover:bg-gray-700"
         >
           {item}
         </li>
