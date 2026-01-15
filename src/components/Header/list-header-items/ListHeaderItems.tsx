@@ -1,16 +1,22 @@
-const ListItems = ["Item 1", "Item 2", "Item 3", "Item 4"];
+const ListItems = ["main", "shop", "custom", "about", "contact"];
+const activeItem = "main";
 
 export const listHeaderItems = () => (
-  <div>
-    <ul className="flex space-x-6 ">
-      {ListItems.map((item, index) => (
+  <ul className="flex space-x-6">
+    {ListItems.map((item) => {
+      const isActive = item === activeItem;
+
+      return (
         <li
-          key={index}
-          className="font-poppins text-sm cursor-pointer p-2 rounded-md hover:bg-gray-700"
+          key={item}
+          className={`
+            font-comfortaa text-base cursor-pointer p-2 rounded-md transition
+            ${isActive ? "text-white font-bold" : "text-black hover:text-white"}
+          `}
         >
           {item}
         </li>
-      ))}
-    </ul>
-  </div>
+      );
+    })}
+  </ul>
 );

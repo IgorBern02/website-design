@@ -11,10 +11,17 @@
   src: url("/src/assets/fonts/Poppins-Regular.ttf");
 }
 
+@font-face {
+  font-family: Comfortaa;
+  src: url("/src/assets/fonts/Comfortaa-Regular.ttf");
+}
+
 :root {
+  --color-white: 255 255 255;
   --color-dark: 31 41 55;
 }
 
 @theme {
   --font-poppins: "Poppins", sans-serif;
+  --font-comfortaa: "Comfortaa", cursive;
 }
