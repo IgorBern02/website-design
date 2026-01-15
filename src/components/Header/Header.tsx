@@ -8,7 +8,7 @@ type HeaderProps = {
 
 export const Header = ({ text_up, text_down }: HeaderProps) => {
   return (
-    <header className="w-full flex justify-between items-center p-4 text-white relative">
+    <header className="w-full h-20 flex justify-between items-center px-6 text-white fixed top-0 left-0  backdrop-blur-md z-50">
       <div className="leading-none">
         <span className="block font-bold text-2xl tracking-tight font-poppins">
           {text_up}
