@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Header } from "./components/Header/Header";
 import { Hero } from "./components/Hero/Hero";
+import { Shop } from "./components/shop/Shop";
 
 function App() {
   return (
@@ -9,12 +10,8 @@ function App() {
 
       <main className="pt-20">
         <Hero />
+        <Shop />
       </main>
-
-      <section className="min-h-screen bg-white p-20">
-        <h2 className="text-6xl font-bold">New Collection</h2>
-        <p className="mt-10">Aqui começa o site...</p>
-      </section>
     </div>
   );
 }

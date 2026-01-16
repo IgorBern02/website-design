@@ -14,8 +14,8 @@ export const HeroCard = ({ scrollYProgress }: any) => {
           Get 20% off on your first purchase! Use code: WELCOME20 at checkout.
         </p>
       </div>
-      <div className="border rounded-2xl">
-        <button className="w-full p-1 font-comfortaa font-bold">
+      <div className="border rounded-2xl hover:bg-gray-100 hover:text-white transition-colors h-auto flex justify-center items-center">
+        <button className="w-full p-1 font-comfortaa font-bold cursor-pointer">
           new collection
         </button>
       </div>
