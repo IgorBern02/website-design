@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
-import { HeroBackgroundText } from "./HeroBackgroundText";
-import { HeroModel } from "./HeroModel";
-import { HeroDescription } from "./HeroDescription";
-import { HeroCard } from "./HeroCard";
+import { HeroBackgroundText } from "../components/Hero/HeroBackgroundText";
+import { HeroModel } from "../components/Hero/HeroModel";
+import { HeroDescription } from "../components/Hero/HeroDescription";
+import { HeroCard } from "../components/Hero/HeroCard";
 
 export const Hero = () => {
   const ref = useRef(null);

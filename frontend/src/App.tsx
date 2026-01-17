@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Header } from "./components/Header/Header";
-import { Hero } from "./components/Hero/Hero";
+import { Hero } from "./pages/Hero";
 import { Shop } from "./components/shop/Shop";
 
 function App() {

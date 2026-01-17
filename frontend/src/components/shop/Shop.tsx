@@ -1,22 +1,24 @@
-import card1 from "../../assets/images/card1.png";
+import { useProducts } from "../../hooks/useProducts";
+import { Card } from "./Card";
 
 export const Shop = () => {
+  const { products } = useProducts();
+
   return (
     <section className="min-h-screen pt-28 px-20  flex flex-col gap-10">
       <h2 className="text-8xl font-black font-roboto ">SHOP</h2>
-      <section className="w-full h-80  ">
-        <div className="border w-100 h-full flex justify-center items-center rounded-2xl shadow-lg ">
-          <img
-            src={card1}
-            alt="card1"
-            className="w-full h-100 scale-105 z-90 mb-25 object-contain"
-          />
-        </div>
-        <div>
-          <h3 className="text-4xl font-bold">Product Name</h3>
-          <p className="text-2xl font-semibold">$99.99</p>
-        </div>
-      </section>
+
+      <Card product={products[0]} />
+
+      {/* <div className="flex">
+        {products.map((product) => (
+          <div key={product.id}>
+            <img src={product.imageUrl} alt={product.name} />
+            <h2>{product.name}</h2>
+            <p>R$ {product.price.toFixed(2)}</p>
+          </div>
+        ))}
+      </div> */}
     </section>
   );
 };
