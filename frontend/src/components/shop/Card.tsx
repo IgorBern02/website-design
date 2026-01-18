@@ -1,5 +1,3 @@
-import card1 from "../../assets/images/card1.png";
-
 type Product = {
   id: number;
   name: string;
@@ -9,22 +7,35 @@ type Product = {
 
 export const Card = ({ product }: { product: Product }) => {
   return (
-    <section className="w-full h-80  ">
-      <div className="border w-100 h-full flex justify-center items-center rounded-2xl shadow-lg ">
+    // Adicionamos a classe 'group' para controlar os filhos no hover
+    <section className="group relative w-full h-80">
+      {/* Moldura de fundo */}
+      <div className="border border-gray-200 w-full h-full flex justify-center items-end rounded-2xl shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:border-gray-400 cursor-pointer ">
+        {/* A Imagem com efeito 3D/Scale */}
         <img
-          src={card1}
-          alt="card1"
-          className="w-full h-100 scale-105 z-90 mb-25 object-contain"
+          src={product?.imageUrl}
+          alt={product?.name}
+          className="
+            h-[120%] mb-0 object-contain z-10 
+            transition-transform duration-500 ease-out
+            group-hover:scale-110 group-hover:-translate-y-4
+            drop-shadow-2xl
+          "
         />
-        {/* <img src={products[0]?.imageUrl} alt={products[0]?.name} /> */}
       </div>
-      <div className=" w-100 flex justify-between items-start mt-2">
-        <div>
-          <h3 className="text-3xl font-bold w-full">{product?.name}</h3>
 
-          <p className="text-xl font-semibold">${product?.price.toFixed(2)}</p>
+      {/* Textos e Botão */}
+      <div className="w-full flex justify-between items-start mt-4">
+        <div className="max-w-[65%]">
+          <h3 className="text-2xl font-semibold font-poppins leading-tight uppercase break-words">
+            {product?.name}
+          </h3>
+          <p className="text-xl font-bold text-gray-800">
+            ${product?.price.toFixed(2)}
+          </p>
         </div>
-        <button className="w-1/3 flex justify-center items-center border rounded-2xl text-white px-6 py-3 cursor-pointer hover:bg-gray-100 transition font-comfortaa text-base">
+
+        <button className="border border-black rounded-xl px-5 py-2 text-black font-semibold transition-colors cursor-pointer hover:bg-gray-100">
           Buy In
         </button>
       </div>
