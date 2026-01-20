@@ -1,7 +1,8 @@
 import "./globals.css";
 import { Header } from "./components/Header/Header";
-import { Hero } from "./pages/Hero";
-import { Shop } from "./components/shop/Shop";
+
+import { Shop } from "./pages/Shop";
+import { HeroPage } from "./pages/HeroPage";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Header text_up="Aura" text_down="store" />
 
       <main className="pt-20">
-        <Hero />
+        <HeroPage />
         <Shop />
       </main>
     </div>
