@@ -14,7 +14,7 @@ export const Hero = () => {
   });
 
   return (
-    <section ref={ref} className="relative h-[200vh] w-full ">
+    <section ref={ref} className="relative w-full">
       <div className="sticky top-20 h-screen overflow-hidden">
         <HeroBackgroundText scrollYProgress={scrollYProgress} />
         <HeroModel scrollYProgress={scrollYProgress} />

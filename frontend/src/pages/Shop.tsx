@@ -6,7 +6,7 @@ export const Shop = () => {
   const { products } = useProducts();
 
   return (
-    <section className="min-h-screen pt-28 px-20 flex flex-col gap-20">
+    <section className="pt-20 px-20 flex flex-col gap-20">
       <h2 className="text-[6rem] font-black leading-none">SHOP</h2>
 
       {/* Grid Responsivo */}

@@ -1,22 +1,23 @@
 const ListItems = ["main", "shop", "custom", "about", "contact"];
-const activeItem = "main";
 
-export const listHeaderItems = () => (
+export const ListHeaderItems = ({ active }: { active: string }) => (
   <ul className="flex space-x-6">
-    {ListItems.map((item) => {
-      const isActive = item === activeItem;
-
-      return (
-        <li
-          key={item}
+    {ListItems.map((item) => (
+      <li key={item}>
+        <a
+          href={`#${item}`}
           className={`
-            font-comfortaa text-base cursor-pointer p-2 rounded-md transition
-            ${isActive ? "text-white font-bold" : "text-black hover:text-white"}
+            font-comfortaa text-base p-2 transition-all duration-300
+            ${
+              active === item
+                ? "text-white font-bold"
+                : "text-black hover:text-white"
+            }
           `}
         >
           {item}
-        </li>
-      );
-    })}
+        </a>
+      </li>
+    ))}
   </ul>
 );
