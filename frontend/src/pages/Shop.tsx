@@ -5,6 +5,8 @@ import { ViewMore } from "../components/shop/ViewMore/ViewMore";
 export const Shop = () => {
   const { products } = useProducts();
 
+  const productsToShow = products.slice(0, 6);
+
   return (
     <section className="pt-20 px-20 flex flex-col gap-20">
       <h2 className="text-[6rem] font-black leading-none">SHOP</h2>
@@ -18,7 +20,11 @@ export const Shop = () => {
         ))}
       </div>
 
-      <ViewMore />
+      <ViewMore
+        onClick={() => {
+          productsToShow;
+        }}
+      />
     </section>
   );
 };

@@ -6,10 +6,10 @@ type Props = {
 export const CardInfo = ({ name, price }: Props) => {
   return (
     <div className="max-w-[65%]">
-      <h3 className="text-2xl font-semibold font-poppins leading-tight uppercase">
+      <h3 className="text-xl font-semibold font-poppins leading-tight uppercase">
         {name}
       </h3>
-      <p className="text-xl font-bold text-gray-800">${price.toFixed(2)}</p>
+      <p className="text-lg font-bold text-gray-800">${price.toFixed(2)}</p>
     </div>
   );
 };
