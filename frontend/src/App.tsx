@@ -1,22 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header/Header";
-import { HeroPage } from "./pages/HeroPage";
-import { ShopPage } from "./pages/ShopPage";
 import { ProductPage } from "./components/shop/ProductPage/ProductPage";
-
-function Home() {
-  return (
-    <>
-      <section id="main">
-        <HeroPage />
-      </section>
-
-      <section id="shop">
-        <ShopPage />
-      </section>
-    </>
-  );
-}
+import { Home } from "./components/Home/Home";
+import { Collection } from "./components/Collection/Collection";
 
 function App() {
   return (
@@ -25,7 +11,9 @@ function App() {
 
       <main className="pt-20">
         <Routes>
+          <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<Home />} />
+          <Route path="/collection" element={<Collection />} />
           <Route path="/product/:id" element={<ProductPage />} />
         </Routes>
       </main>

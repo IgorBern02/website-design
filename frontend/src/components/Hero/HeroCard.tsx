@@ -1,4 +1,5 @@
 import { motion, useTransform } from "framer-motion";
+import { Link } from "react-router";
 
 export const HeroCard = ({ scrollYProgress }: any) => {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
@@ -15,9 +16,12 @@ export const HeroCard = ({ scrollYProgress }: any) => {
         </p>
       </div>
       <div className="border rounded-2xl hover:bg-gray-100 hover:text-white transition-colors h-auto flex justify-center items-center">
-        <button className="w-full p-1 font-comfortaa font-bold cursor-pointer">
+        <Link
+          className="w-full flex items-center justify-center p-1 font-comfortaa font-bold cursor-pointer"
+          to="/collection"
+        >
           new collection
-        </button>
+        </Link>
       </div>
     </motion.div>
   );
