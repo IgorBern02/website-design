@@ -1,6 +1,22 @@
+import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { HeroPage } from "./pages/HeroPage";
-import { Shop } from "./pages/Shop";
+import { ShopPage } from "./pages/ShopPage";
+import { ProductPage } from "./components/shop/ProductPage/ProductPage";
+
+function Home() {
+  return (
+    <>
+      <section id="main">
+        <HeroPage />
+      </section>
+
+      <section id="shop">
+        <ShopPage />
+      </section>
+    </>
+  );
+}
 
 function App() {
   return (
@@ -8,13 +24,10 @@ function App() {
       <Header text_up="Aura" text_down="store" />
 
       <main className="pt-20">
-        <section id="main" className="">
-          <HeroPage />
-        </section>
-
-        <section id="shop" className="">
-          <Shop />
-        </section>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+        </Routes>
       </main>
     </div>
   );

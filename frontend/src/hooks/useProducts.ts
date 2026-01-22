@@ -13,8 +13,16 @@ export const useProducts = () => {
 
         if (!res.ok) throw new Error("Erro ao buscar produtos");
 
+        // No seu hook useProducts
         const data = await res.json();
-        setProducts(data);
+
+        // Transformar _id em id, se necessário
+        const normalizedData = data.map((p: any) => ({
+          ...p,
+          id: p.id || p._id, // Se não houver 'id', usa o '_id'
+        }));
+
+        setProducts(normalizedData);
       } catch (err) {
         setError("Falha ao carregar produtos");
       } finally {

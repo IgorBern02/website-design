@@ -1,11 +1,14 @@
-const ListItems = ["main", "shop", "custom", "about", "contact"];
+import { HashLink } from "react-router-hash-link";
+
+const ListItems = ["main", "shop", "collection", "about", "contact"];
 
 export const ListHeaderItems = ({ active }: { active: string }) => (
   <ul className="flex space-x-6">
     {ListItems.map((item) => (
       <li key={item}>
-        <a
-          href={`#${item}`}
+        <HashLink
+          smooth // Faz o scroll suave
+          to={item === "main" ? "/#main" : `/#${item}`}
           className={`
             font-comfortaa text-base p-2 transition-all duration-300
             ${
@@ -16,7 +19,7 @@ export const ListHeaderItems = ({ active }: { active: string }) => (
           `}
         >
           {item}
-        </a>
+        </HashLink>
       </li>
     ))}
   </ul>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ListHeaderItems } from "./Navitems";
+import { useLocation } from "react-router-dom";
 
 const sections = ["main", "shop"];
 
@@ -10,6 +11,26 @@ interface HeaderProps {
 
 export const Header = ({ text_up, text_down }: HeaderProps) => {
   const [active, setActive] = useState("main");
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    // 1. Se o usuário estiver em uma página de produto,
+    // podemos limpar o active ou deixar marcado como vazio
+    if (pathname.includes("/product")) {
+      setActive("");
+      return;
+    }
+
+    // 2. Se o usuário voltar para a Home "/" sem hash específico,
+    // ou se o hash for "#main", marcamos como "main"
+    if (pathname === "/" && (!hash || hash === "#main")) {
+      setActive("main");
+      window.scrollTo(0, 0); // Garante que subiu pro topo
+    } else if (hash) {
+      // 3. Se houver um hash (ex: #shop), atualiza o active
+      setActive(hash.replace("#", ""));
+    }
+  }, [pathname, hash]); // Executa sempre que mudar a URL ou o #ID
 
   useEffect(() => {
     const observer = new IntersectionObserver(
