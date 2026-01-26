@@ -72,28 +72,37 @@ router.put("/:id", upload.single("image"), async (req, res) => {
       return res.status(404).json({ message: "Produto não encontrado" });
     }
 
+    // Se enviou nova imagem
     if (req.file) {
-      // apaga a antiga
       await cloudinary.uploader.destroy(product.imagePublicId);
 
-      // sobe a nova
       const uploadResult = await cloudinary.uploader.upload(
         `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
-        { folder: "aurastore" },
+        { folder: "loja-roupas" },
       );
 
       product.imageUrl = uploadResult.secure_url;
       product.imagePublicId = uploadResult.public_id;
     }
 
+    // Atualiza campos corretamente
     product.name = req.body.name ?? product.name;
-    product.price = req.body.price ?? product.price;
+    product.price = req.body.price ? Number(req.body.price) : product.price;
+    product.category = req.body.category
+      ? req.body.category.toLowerCase()
+      : product.category;
     product.description = req.body.description ?? product.description;
+
+    // TRATAMENTO CORRETO DO SIZES
+    if (req.body.sizes) {
+      product.sizes = req.body.sizes.split(",").map((s) => s.trim());
+    }
 
     await product.save();
 
     res.json(product);
   } catch (error) {
+    console.error(error); // MUITO IMPORTANTE PRA VER O ERRO REAL
     res.status(500).json({ message: "Erro ao atualizar produto" });
   }
 });
