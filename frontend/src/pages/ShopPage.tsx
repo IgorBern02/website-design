@@ -6,7 +6,7 @@ import { ViewMore } from "../components/shop/ViewMore/ViewMore";
 export const ShopPage = () => {
   const { products } = useProducts();
 
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   return (
     <section className="pt-20 px-20 flex flex-col gap-20">
