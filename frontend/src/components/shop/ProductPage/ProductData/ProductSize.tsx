@@ -1,24 +1,39 @@
-export const ProductSize = () => {
+import { useState } from "react";
+
+type ProductSizeProps = {
+  sizes: string[]; // Usamos os tamanhos que vêm do produto real
+};
+
+export const ProductSize = ({ sizes }: ProductSizeProps) => {
+  // Estado para saber qual tamanho foi clicado (igual ao círculo preto da imagem)
+  const [selected, setSelected] = useState<string>(sizes[0]);
+
+  if (!sizes || sizes.length === 0) {
+    return <p className="text-sm text-red-500">Tamanhos indisponíveis</p>;
+  }
+
   return (
-    <>
-      <span className="font-poppins text-sm">Select Size</span>
+    <div className="flex flex-col gap-4">
+      <span className="font-comfortaa text-sm">Select Size</span>
       <ul className="flex items-center gap-3">
-        <li className="border rounded-2xl px-6 py-2 hover:bg-gray-100 cursor-pointer">
-          S
-        </li>
-        <li className="border rounded-2xl px-6 py-2 hover:bg-gray-100 cursor-pointer">
-          M
-        </li>
-        <li className="border rounded-2xl px-6 py-2 hover:bg-gray-100 cursor-pointer">
-          L
-        </li>
-        <li className="border rounded-2xl px-6 py-2 hover:bg-gray-100 cursor-pointer">
-          XL
-        </li>
-        <li className="border rounded-2xl px-6 py-2 hover:bg-gray-100 cursor-pointer">
-          XXL
-        </li>
+        {sizes.map((size) => (
+          <li key={size}>
+            <button
+              onClick={() => setSelected(size)}
+              className={`
+                w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-300 cursor-pointer text-sm font-medium
+                ${
+                  selected === size
+                    ? "bg-gray-100 text-white" // Estilo selecionado (Imagem 1)
+                    : "bg-white text-black border-gray-200 hover:border-black" // Estilo padrão
+                }
+              `}
+            >
+              {size}
+            </button>
+          </li>
+        ))}
       </ul>
-    </>
+    </div>
   );
 };

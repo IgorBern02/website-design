@@ -8,6 +8,7 @@ type Product = {
     name: string;
     price: number;
     description: string;
+    sizes: string[];
   };
 };
 
@@ -17,7 +18,7 @@ export const ProductData = ({ product }: Product) => {
       <h1 className="text-3xl font-bold font-comfortaa">{product.name}</h1>
       <p className="text-2xl font-semibold ">${product.price}</p>
       <Discount />
-      <ProductSize />
+      <ProductSize sizes={product.sizes} />
       <ButtonBuy text="Buy Now" />
       <ProductDescription description={product.description} />
     </div>
