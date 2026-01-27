@@ -4,6 +4,8 @@ import { ProductImage } from "./ProductImage";
 import { ProductData } from "./ProductData/ProductData";
 import { Rating } from "./Rating/Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Filters } from "./Filters/Filters";
+import { useState } from "react";
 
 export const ProductPage = () => {
   const { id } = useParams();
@@ -36,7 +38,6 @@ export const ProductPage = () => {
       </section>
       <section className="p-10 flex gap-20 w-full h-min-screen ">
         <ProductImage imageUrl={product.imageUrl} name={product.name} />
-
         <ProductData product={product} />
       </section>
       <section className="w-full p-20 ">
