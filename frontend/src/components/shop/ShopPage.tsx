@@ -15,16 +15,15 @@ export const ShopPage = () => {
 
   // 2. Filtro combinado: Texto + Categoria
   const filteredProducts = products.filter((product) => {
-    // Busca por texto
     const matchesSearch = product.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    // Busca por Categoria:
-    // Se for "All", retorna true para todos.
-    // Se não, verifica se a categoria do produto é IGUAL à selecionada.
+    const normalizedSelected = selectedCategory.trim().toLowerCase();
+    const normalizedCategory = product.category.trim().toLowerCase();
+
     const matchesCategory =
-      selectedCategory === "All" || product.category === selectedCategory;
+      normalizedSelected === "all" || normalizedCategory === normalizedSelected;
 
     return matchesSearch && matchesCategory;
   });
