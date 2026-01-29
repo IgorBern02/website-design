@@ -4,8 +4,6 @@ import { ProductImage } from "./ProductImage";
 import { ProductData } from "./ProductData/ProductData";
 import { Rating } from "./Rating/Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Filters } from "../Filters/Filters";
-import { useState } from "react";
 
 export const ProductPage = () => {
   const { id } = useParams();

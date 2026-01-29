@@ -1,10 +1,12 @@
-import { HeroPage } from "../components/Hero/HeroPage";
 import { ShopPage } from "../components/shop/ShopPage";
 
-export const Home = () => {
+interface HomeProps {
+  searchTerm: string;
+  selectedCategory: string;
+}
+
+export const Home = ({ searchTerm, selectedCategory }: HomeProps) => {
   return (
-    <>
-      <ShopPage />
-    </>
+    <ShopPage searchTerm={searchTerm} selectedCategory={selectedCategory} />
   );
 };

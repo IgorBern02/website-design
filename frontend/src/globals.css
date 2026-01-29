@@ -10,6 +10,7 @@ body {
 html,
 body {
   scrollbar-width: none;
+  overflow-anchor: none;
 }
 
 html::-webkit-scrollbar,

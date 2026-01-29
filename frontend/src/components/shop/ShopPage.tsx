@@ -2,18 +2,19 @@ import { useState } from "react";
 import { useProducts } from "../../hooks/useProducts";
 import { Card } from "./Card/Card";
 import { ViewMore } from "./ViewMore/ViewMore";
-import { Filters } from "./Filters/Filters";
 
-export const ShopPage = () => {
+interface ShopPageProps {
+  searchTerm: string;
+  selectedCategory: string;
+}
+
+export const ShopPage = ({ searchTerm, selectedCategory }: ShopPageProps) => {
   const { products } = useProducts();
   const INITIAL_COUNT = 6;
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All"); // 1. Novo estado
 
   const isExpanded = visibleCount > INITIAL_COUNT;
 
-  // 2. Filtro combinado: Texto + Categoria
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name
       .toLowerCase()
@@ -33,21 +34,12 @@ export const ShopPage = () => {
       setVisibleCount(INITIAL_COUNT);
       document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" });
     } else {
-      setVisibleCount(products.length); // Abre tudo para facilitar a navegação
+      setVisibleCount(filteredProducts.length); // 👈 aqui também é importante
     }
   };
 
   return (
     <section className="px-20 flex flex-col gap-20" id="shop">
-      {/* 3. Atualizamos o estado quando uma categoria é clicada */}
-      <Filters
-        onSearch={setSearchTerm}
-        onCategorySelect={(cat) => {
-          setSelectedCategory(cat);
-          setVisibleCount(INITIAL_COUNT); // Reseta a paginação ao trocar de categoria
-        }}
-      />
-
       <h2 className="text-[6rem] font-black leading-none uppercase">shop</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-end">
