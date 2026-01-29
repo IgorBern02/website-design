@@ -1,12 +1,23 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import type { HeaderProps } from "./types";
 
-export const MenuHamburguer = () => {
+export const MenuHamburguer = ({ isOpen, onToggle }: HeaderProps) => {
   return (
-    <div className="md:hidden absolute right-10 p-2 rounded-md cursor-pointer hover:bg-gray-700">
-      <button className="flex flex-col space-y-2">
-        <FontAwesomeIcon icon={faBars} className="text-xl text-white" />
-      </button>
-    </div>
+    <section
+      onClick={onToggle}
+      className={`p-2 flex flex-col justify-center gap-1.5 cursor-pointer z-50 transition-transform duration-500 ${
+        isOpen ? "translate-x-48" : "translate-x-0"
+      }`}
+    >
+      {/* Os traços do hambúrguer continuam iguais */}
+      <div
+        className={`w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`}
+      />
+      <div
+        className={`w-4 h-0.5 bg-black transition-all duration-300 ${isOpen ? "opacity-0" : ""}`}
+      />
+      <div
+        className={`w-6 h-0.5 bg-black transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
+      />
+    </section>
   );
 };

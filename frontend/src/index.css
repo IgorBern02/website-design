@@ -15,11 +15,6 @@
   src: url("/src/assets/fonts/Roboto-Bold.ttf");
 }
 
-:root {
-  --color-white: 255 255 255;
-  --color-dark: 31 41 55;
-}
-
 @theme {
   --font-poppins: "Poppins", sans-serif;
   --font-comfortaa: "Comfortaa", cursive;

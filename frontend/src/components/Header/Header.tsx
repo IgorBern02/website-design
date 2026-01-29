@@ -1,26 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MenuHamburguer } from "./MenuHamburguer";
+import type { HeaderProps } from "./types";
 
-interface HeaderProps {
-  text_up: string;
-  text_down: string;
-}
-
-export const Header = ({ text_up, text_down }: HeaderProps) => {
+export const Header = ({ isOpen, onToggle }: HeaderProps) => {
   return (
-    <header className=" w-full h-20 flex items-center justify-between px-6">
-      <section className="leading-none">
-        <span className="block font-bold text-2xl">{text_up}</span>
-        <span className="block font-bold text-xl -mt-1">{text_down}</span>
-      </section>
-
+    <header className="relative z-50 w-full h-20 flex items-center justify-between px-6">
+      <MenuHamburguer isOpen={isOpen} onToggle={onToggle} />
+      <span className="text-2xl font-black font-comfortaa">Aura store</span>
       <section className="flex items-center gap-7">
-        <nav className="flex items-center p-2">
-          <ul className="flex gap-8">
-            <li className="font-comfortaa text-sm cursor-pointer">About</li>
-            <li className="font-comfortaa text-sm cursor-pointer">FAQs</li>
-          </ul>
-        </nav>
-        <div className="flex items-center justify-center p-3  shadow-sm shadow-gray-300 rounded-full cursor-pointer hover:bg-gray-100 transition">
+        <div className="flex items-center justify-center p-3 shadow-sm shadow-gray-300 rounded-full cursor-pointer hover:bg-gray-100 transition">
           <FontAwesomeIcon icon="bag-shopping" className="text-sm" />
         </div>
       </section>
