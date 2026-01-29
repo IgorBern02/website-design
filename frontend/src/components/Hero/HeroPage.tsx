@@ -8,13 +8,11 @@ export const HeroPage = () => {
   const { scrollYProgress } = useScroll();
 
   return (
-    <section className="relative w-full ">
-      <div className="h-screen">
-        <HeroBackgroundText scrollYProgress={scrollYProgress} />
-        <HeroModel scrollYProgress={scrollYProgress} />
-        <HeroDescription scrollYProgress={scrollYProgress} />
-        <HeroCard scrollYProgress={scrollYProgress} />
-      </div>
+    <section className="relative w-full h-screen  overflow-hidden">
+      <HeroBackgroundText scrollYProgress={scrollYProgress} />
+      <HeroModel scrollYProgress={scrollYProgress} />
+      <HeroDescription scrollYProgress={scrollYProgress} />
+      <HeroCard scrollYProgress={scrollYProgress} />
     </section>
   );
 };

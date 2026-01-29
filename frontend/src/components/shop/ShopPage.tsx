@@ -2,18 +2,17 @@ import { useState } from "react";
 import { useProducts } from "../../hooks/useProducts";
 import { Card } from "./Card/Card";
 import { ViewMore } from "./ViewMore/ViewMore";
+import { Filters } from "./Filters/Filters";
 
-interface ShopPageProps {
-  searchTerm: string;
-  selectedCategory: string;
-}
-
-export const ShopPage = ({ searchTerm, selectedCategory }: ShopPageProps) => {
+export const ShopPage = () => {
   const { products } = useProducts();
   const INITIAL_COUNT = 6;
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
   const isExpanded = visibleCount > INITIAL_COUNT;
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name
@@ -40,6 +39,11 @@ export const ShopPage = ({ searchTerm, selectedCategory }: ShopPageProps) => {
 
   return (
     <section className="px-20 flex flex-col gap-20" id="shop">
+      <Filters
+        onSearch={setSearchTerm}
+        onCategorySelect={setSelectedCategory}
+      />
+
       <h2 className="text-[6rem] font-black leading-none uppercase">shop</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-end">
