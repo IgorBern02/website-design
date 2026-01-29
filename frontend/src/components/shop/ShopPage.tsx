@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useProducts } from "../../hooks/useProducts";
 import { Card } from "./Card/Card";
 import { ViewMore } from "./ViewMore/ViewMore";
-import { Filters } from "./ProductPage/Filters/Filters";
+import { Filters } from "./Filters/Filters";
 
 export const ShopPage = () => {
   const { products } = useProducts();
