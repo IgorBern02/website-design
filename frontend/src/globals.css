@@ -9,7 +9,7 @@ body {
 /* Remove scrollbar visual */
 html,
 body {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 html::-webkit-scrollbar,

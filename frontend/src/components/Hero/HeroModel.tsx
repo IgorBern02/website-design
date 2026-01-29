@@ -2,10 +2,10 @@ import { motion, useTransform } from "framer-motion";
 import bg from "../../assets/images/bg.png";
 
 export const HeroModel = ({ scrollYProgress }: any) => {
-  const scale = useTransform(scrollYProgress, [0, 1], [1.15, 0.4]);
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, -25]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.35], [1.15, 0.4]);
+  const y = useTransform(scrollYProgress, [0, 0.35], ["0%", "60%"]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.35], [0, -25]);
+  const opacity = useTransform(scrollYProgress, [0, 0.28], [1, 0]);
 
   return (
     <motion.div

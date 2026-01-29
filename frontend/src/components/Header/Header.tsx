@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-import { ListHeaderItems } from "./Navitems";
-import { useLocation } from "react-router-dom";
-
-const sections = ["main", "shop"];
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface HeaderProps {
   text_up: string;
@@ -10,62 +6,24 @@ interface HeaderProps {
 }
 
 export const Header = ({ text_up, text_down }: HeaderProps) => {
-  const [active, setActive] = useState("main");
-  const { pathname, hash } = useLocation();
-
-  useEffect(() => {
-    // 1. Se o usuário estiver em uma página de produto,
-    // podemos limpar o active ou deixar marcado como vazio
-    if (pathname.includes("/product")) {
-      setActive("");
-      return;
-    }
-
-    // 2. Se o usuário voltar para a Home "/" sem hash específico,
-    // ou se o hash for "#main", marcamos como "main"
-    if (pathname === "/" && (!hash || hash === "#main")) {
-      setActive("main");
-      window.scrollTo(0, 0); // Garante que subiu pro topo
-    } else if (hash) {
-      // 3. Se houver um hash (ex: #shop), atualiza o active
-      setActive(hash.replace("#", ""));
-    }
-  }, [pathname, hash]); // Executa sempre que mudar a URL ou o #ID
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0,
-      },
-    );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <header className="fixed top-0 left-0 w-full h-20 flex items-center px-6 backdrop-blur-md z-50">
-      <div className="leading-none">
+    <header className=" w-full h-20 flex items-center justify-between px-6">
+      <section className="leading-none">
         <span className="block font-bold text-2xl">{text_up}</span>
         <span className="block font-bold text-xl -mt-1">{text_down}</span>
-      </div>
+      </section>
 
-      <nav className="mx-auto">
-        <ListHeaderItems active={active} />
-      </nav>
+      <section className="flex items-center gap-7">
+        <nav className="flex items-center p-2">
+          <ul className="flex gap-8">
+            <li className="font-comfortaa text-sm cursor-pointer">About</li>
+            <li className="font-comfortaa text-sm cursor-pointer">FAQs</li>
+          </ul>
+        </nav>
+        <div className="flex items-center justify-center p-3  shadow-sm shadow-gray-300 rounded-full cursor-pointer hover:bg-gray-100 transition">
+          <FontAwesomeIcon icon="bag-shopping" className="text-sm" />
+        </div>
+      </section>
     </header>
   );
 };

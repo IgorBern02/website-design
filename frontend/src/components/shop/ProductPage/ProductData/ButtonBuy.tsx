@@ -8,7 +8,7 @@ export const ButtonBuy = ({ text }: ButtonBuyProps) => {
 
   return (
     <div className="flex justify-between items-center">
-      <button className="w-full border rounded-2xl text-white px-10 py-4 font-comfortaa text-sm hover:bg-gray-100 transition cursor-pointer">
+      <button className="w-full border rounded-2xl text-white px-10 py-4 font-comfortaa text-sm hover:bg-gray-100 transition cursor-pointer ">
         {text || "Comprar agora"}
       </button>
 

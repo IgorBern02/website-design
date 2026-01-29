@@ -6,6 +6,18 @@ import {
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 // adiciona todos os ícones que o app usa na biblioteca
-library.add(solidHeart, regularHeart, faExclamation, faStar, faArrowLeft);
+library.add(
+  solidHeart,
+  regularHeart,
+  faExclamation,
+  faStar,
+  faArrowLeft,
+  faBagShopping,
+  faChevronDown,
+  faMagnifyingGlass,
+);

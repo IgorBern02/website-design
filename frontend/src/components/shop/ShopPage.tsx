@@ -38,7 +38,7 @@ export const ShopPage = () => {
   };
 
   return (
-    <section className="pt-20 px-20 flex flex-col gap-20" id="shop">
+    <section className="px-20 flex flex-col gap-20" id="shop">
       {/* 3. Atualizamos o estado quando uma categoria é clicada */}
       <Filters
         onSearch={setSearchTerm}

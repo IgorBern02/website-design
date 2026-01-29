@@ -11,7 +11,7 @@ export const Filters = ({ onSearch, onCategorySelect }: FiltersProps) => {
   const categories = ["all", "pants", "sets", "hoodie", "t-shirts"];
 
   return (
-    <section className="h-20 w-full flex items-center px-10 bg-white border-b border-gray-100 gap-4 relative">
+    <section className="h-20 w-full flex items-center px-10 border-b border-gray-100 gap-4 relative">
       {/* Container do Dropdown */}
       <div className="relative">
         <div
@@ -27,7 +27,7 @@ export const Filters = ({ onSearch, onCategorySelect }: FiltersProps) => {
 
         {/* Lista Suspensa (O Menu que abre) */}
         {isCategoriesOpen && (
-          <ul className="absolute top-12 left-0 w-48 bg-white border border-gray-100 rounded-2xl shadow-xl py-2 z-90 animate-in fade-in zoom-in duration-200">
+          <ul className="absolute top-12 left-0 w-48 flex flex-col gap-2 bg-gray-100 border border-gray-100 rounded-2xl shadow-xl py-2 z-90 animate-in fade-in zoom-in duration-200">
             {categories.map((cat) => (
               <li
                 key={cat}
@@ -35,6 +35,7 @@ export const Filters = ({ onSearch, onCategorySelect }: FiltersProps) => {
                   onCategorySelect(cat); // Avisa o ShopPage que "T-Shirts" foi selecionado
                   setIsCategoriesOpen(false);
                 }}
+                className="px-3 py-1 text-sm text-gray-700 font-poppins cursor-pointer hover:bg-gray-200 transition"
               >
                 {cat}
               </li>
