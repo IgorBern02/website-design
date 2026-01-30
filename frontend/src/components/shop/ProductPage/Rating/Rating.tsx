@@ -5,7 +5,7 @@ export const Rating = () => {
   const totalStars = 5;
   return (
     <>
-      <div className="w-full h-full rounded-md text-white flex items-center gap-7">
+      <div className="w-full h-full rounded-md text-black flex items-center gap-7">
         <div className="flex  gap-2">
           <p className="text-9xl font-comfortaa">4,5</p>
           <p className="text-gray-400 flex items-end text-2xl">/5</p>
@@ -22,7 +22,7 @@ export const Rating = () => {
         </ul>
       </div>
       <div className=" flex flex-col w-4/5 p-5 gap-6 rounded-md border border-gray-200">
-        <p className="text-md font-semibold font-comfortaa">Alex Mthio</p>
+        <p className="text-md font-semibold font-comfortaa">Alex Mathio</p>
         <section className=" flex items-center justify-between">
           <ul className="flex">
             {[...Array(totalStars)].map((_, index) => (

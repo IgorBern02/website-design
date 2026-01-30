@@ -5,11 +5,14 @@ import "./globals.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./lib/fontawesome";
+import { FavoritesProvider } from "./context/FavoritesContext";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <FavoritesProvider>
+        <App />
+      </FavoritesProvider>
     </BrowserRouter>
   </StrictMode>,
 );

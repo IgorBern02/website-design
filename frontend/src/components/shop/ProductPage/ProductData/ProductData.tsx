@@ -1,25 +1,22 @@
 import { ProductSize } from "./ProductSize";
-import { ButtonBuy } from "./ButtonBuy";
+import { ButtonsBuyAndFavorite } from "./ButtonsBuyAndFavorite";
 import { ProductDescription } from "./ProductDescription";
 import { Discount } from "./Discount";
+import type { Product } from "../../../../types/products";
+import { mapProductToFavorite } from "../../../../utils/mapProductToFavorite";
 
-type Product = {
-  product: {
-    name: string;
-    price: number;
-    description: string;
-    sizes: string[];
-  };
-};
+export const ProductData = ({ product }: { product: Product }) => {
+  const favoriteItem = mapProductToFavorite(product);
 
-export const ProductData = ({ product }: Product) => {
   return (
     <div className="flex flex-col gap-6 p-10 w-1/3 h-full">
       <h1 className="text-3xl font-bold font-comfortaa">{product.name}</h1>
       <p className="text-2xl font-semibold ">${product.price}</p>
       <Discount />
       <ProductSize sizes={product.sizes} />
-      <ButtonBuy text="Buy Now" />
+
+      <ButtonsBuyAndFavorite item={favoriteItem} />
+
       <ProductDescription description={product.description} />
     </div>
   );

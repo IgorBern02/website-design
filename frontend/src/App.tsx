@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 
 import { useState } from "react";
 import { Sidebar } from "./components/Header/Sidebar";
+import { FavoritePage } from "./pages/FavoritesPage";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ function App() {
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/favorites" element={<FavoritePage />} />
         </Routes>
       </main>
     </div>

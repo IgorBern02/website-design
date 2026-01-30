@@ -24,7 +24,7 @@ export const ProductSize = ({ sizes }: ProductSizeProps) => {
                 w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-300 cursor-pointer text-sm font-medium
                 ${
                   selected === size
-                    ? "bg-gray-100 text-white" // Estilo selecionado (Imagem 1)
+                    ? "bg-gray-100 text-black" // Estilo selecionado (Imagem 1)
                     : "bg-white text-black border-gray-200 hover:border-black" // Estilo padrão
                 }
               `}

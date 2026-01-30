@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { HeaderProps } from "./types";
+import { Link } from "react-router-dom";
 
 export const Sidebar = ({ isOpen, onClose }: HeaderProps) => {
   const ArrayItems = [
@@ -40,14 +41,14 @@ export const Sidebar = ({ isOpen, onClose }: HeaderProps) => {
         <div className="p-10 pt-24 flex flex-col gap-6 text-xl font-comfortaa">
           {/* pt-24 dá espaço para o X não cobrir o texto "Home" */}
           {ArrayItems.map((item) => (
-            <a
+            <Link
+              to={`/${item.name.toLowerCase()}`}
               key={item.name}
-              href={`#${item.name.toLowerCase()}`}
               className="flex items-center justify-start gap-5 text-base font-comfortaa hover:text-gray-700 transition-colors duration-300"
             >
               <FontAwesomeIcon icon={item.icon as any} className="text-sm" />{" "}
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
       </aside>
