@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFavorites } from "../../src/context/FavoritesContext";
+import { Breadcrumb } from "../components/ui/Breadcrumb";
 
 export const FavoritePage = () => {
   const { favorites } = useFavorites();
@@ -7,21 +7,9 @@ export const FavoritePage = () => {
   return (
     <>
       <section className="flex items-center gap-4 px-10 py-6 bg-white">
-        <button
-          onClick={() => window.history.back()}
-          className="hover:opacity-60 transition-opacity cursor-pointer"
-        >
-          <FontAwesomeIcon
-            icon="arrow-left"
-            className="text-gray-800 text-sm"
-          />
-        </button>
-
-        <nav className="flex items-center gap-2 font-comfortaa text-[12px] tracking-wide">
-          <span className="text-gray-400">Home</span>
-          <span className="text-gray-300 mx-1">•</span>
-          <span className="text-gray-600 font-medium">Favorites</span>
-        </nav>
+        <Breadcrumb
+          items={[{ label: "Home", href: "/" }, { label: "Favorites" }]}
+        />
       </section>
       <div className="p-10">
         <h2 className="text-[6rem] font-black leading-none uppercase">
@@ -30,11 +18,11 @@ export const FavoritePage = () => {
 
         {favorites.length === 0 && <p>Nenhum item favoritado.</p>}
 
-        <div className="grid grid-cols-4 grid-rows-auto gap-6 p-2 ">
+        <div className="grid grid-cols-4 grid-rows-auto gap-6 p-2 mt-5">
           {favorites.map((item) => (
             <div
               key={item.id}
-              className="bg-gray-100 w-full h-full gap-2  p-5 flex flex-col items-center justify-center overflow-hidden rounded-lg"
+              className="w-full h-full gap-2  p-5 flex flex-col items-center justify-center overflow-hidden rounded-2xl shadow-lg shadow-gray-500"
             >
               <img
                 src={item.image}

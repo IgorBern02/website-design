@@ -6,16 +6,24 @@ import { Home } from "./pages/Home";
 import { useState } from "react";
 import { Sidebar } from "./components/Header/Sidebar";
 import { FavoritePage } from "./pages/FavoritesPage";
+import { CartSidebar } from "./components/ui/CartSidebar";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
-      <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      <Header isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)} />
+      <Sidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      <main className="w-full p-10">
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <Header
+        isMenuOpen={isMenuOpen}
+        onMenuToggle={() => setIsMenuOpen((p) => !p)}
+        onCartToggle={() => setIsCartOpen((p) => !p)}
+      />
+
+      <main className="w-full p-10 mt-10">
         <Routes>
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<Home />} />

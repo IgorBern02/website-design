@@ -1,5 +1,15 @@
 export type HeaderProps = {
+  isMenuOpen: boolean;
+  onMenuToggle: () => void;
+  onCartToggle: () => void;
+};
+
+export type SidebarProps = {
   isOpen: boolean;
-  onToggle?: () => void;
-  onClose?: () => void;
+  onClose: () => void;
+};
+
+export type MenuHamburguerProps = {
+  isOpen: boolean;
+  onToggle: () => void;
 };

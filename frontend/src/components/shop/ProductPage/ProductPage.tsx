@@ -4,6 +4,7 @@ import { ProductImage } from "./ProductImage";
 import { ProductData } from "./ProductData/ProductData";
 import { Rating } from "./Rating/Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Breadcrumb } from "../../ui/Breadcrumb";
 
 export const ProductPage = () => {
   const { id } = useParams();
@@ -18,21 +19,9 @@ export const ProductPage = () => {
   return (
     <>
       <section className="flex items-center gap-4 px-10 py-6 bg-white">
-        <button
-          onClick={() => window.history.back()}
-          className="hover:opacity-60 transition-opacity cursor-pointer"
-        >
-          <FontAwesomeIcon
-            icon="arrow-left"
-            className="text-gray-800 text-sm"
-          />
-        </button>
-
-        <nav className="flex items-center gap-2 font-comfortaa text-[12px] tracking-wide">
-          <span className="text-gray-400">Home</span>
-          <span className="text-gray-300 mx-1">•</span>
-          <span className="text-gray-600 font-medium">Product details</span>
-        </nav>
+        <Breadcrumb
+          items={[{ label: "Home", href: "/" }, { label: "Product Details" }]}
+        />
       </section>
       <section className="p-10 flex gap-20 w-full h-min-screen ">
         <ProductImage imageUrl={product.imageUrl} name={product.name} />
