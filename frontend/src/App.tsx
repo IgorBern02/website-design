@@ -19,6 +19,7 @@ function App() {
         <Routes>
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/favorites" element={<FavoritePage />} />
         </Routes>

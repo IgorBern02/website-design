@@ -13,6 +13,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 // adiciona todos os ícones que o app usa na biblioteca
 library.add(
@@ -28,4 +29,5 @@ library.add(
   faBookmark,
   faUser,
   faGear,
+  faHome,
 );

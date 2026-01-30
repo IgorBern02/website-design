@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 export const Sidebar = ({ isOpen, onClose }: HeaderProps) => {
   const ArrayItems = [
     {
+      name: "Home",
+      icon: "home",
+    },
+    {
       name: "Favorites",
       icon: "bookmark",
     },
