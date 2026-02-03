@@ -6,7 +6,7 @@ export const FavoritePage = () => {
 
   return (
     <>
-      <section className="flex items-center gap-4 px-10 py-6 bg-white">
+      <section className="flex items-center gap-4 px-10 py-6 bg-gray-50">
         <Breadcrumb
           items={[{ label: "Home", href: "/" }, { label: "Favorites" }]}
         />
@@ -31,7 +31,7 @@ export const FavoritePage = () => {
               />
               <div className="flex flex-col items-center justify-center bottom-0  w-full">
                 <h2>{item.title}</h2>
-                <p>R$ {item.price}</p>
+                <p className="font-bold">$ {item.price}</p>
               </div>
             </div>
           ))}
