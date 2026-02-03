@@ -4,7 +4,8 @@ import { ProductPage } from "./components/shop/ProductPage/ProductPage";
 import { Home } from "./pages/Home";
 
 import { useState } from "react";
-import { Sidebar } from "./components/Header/Sidebar";
+
+import { NavSideBar } from "./components/ui/NavSideBar";
 import { FavoritePage } from "./pages/FavoritesPage";
 import { CartSidebar } from "./components/ui/CartSidebar";
 
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
-      <Sidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <NavSideBar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <Header

@@ -3,7 +3,7 @@ import { useProducts } from "../../../hooks/useProducts";
 import { ProductImage } from "./ProductImage";
 import { ProductData } from "./ProductData/ProductData";
 import { Rating } from "./Rating/Rating";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { Breadcrumb } from "../../ui/Breadcrumb";
 
 export const ProductPage = () => {

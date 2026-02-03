@@ -1,9 +1,6 @@
-type Props = {
-  isOpen: boolean;
-  onClose: () => void;
-};
+import type { SidebarProps } from "../../types/header";
 
-export const CartSidebar = ({ isOpen, onClose }: Props) => {
+export const CartSidebar = ({ isOpen, onClose }: SidebarProps) => {
   return (
     <>
       {/* Overlay */}

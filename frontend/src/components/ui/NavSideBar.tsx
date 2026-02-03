@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import type { SidebarProps } from "./types";
+import type { SidebarProps } from "../../types/header";
 
-export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+export const NavSideBar = ({ isOpen, onClose }: SidebarProps) => {
   const ArrayItems = [
     { name: "Home", icon: "home" },
     { name: "Favorites", icon: "bookmark" },
