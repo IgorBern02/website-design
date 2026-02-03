@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   useFavorites,
   type FavoriteItem,
-} from "../../../../context/FavoritesContext";
+} from "../../../../../context/FavoritesContext";
 
 type ButtonFavoriteProps = {
   item: FavoriteItem;

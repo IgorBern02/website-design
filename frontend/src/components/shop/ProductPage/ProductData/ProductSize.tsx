@@ -1,11 +1,10 @@
 import { useState } from "react";
 
 type ProductSizeProps = {
-  sizes: string[]; // Usamos os tamanhos que vêm do produto real
+  sizes: string[];
 };
 
 export const ProductSize = ({ sizes }: ProductSizeProps) => {
-  // Estado para saber qual tamanho foi clicado (igual ao círculo preto da imagem)
   const [selected, setSelected] = useState<string>(sizes[0]);
 
   if (!sizes || sizes.length === 0) {

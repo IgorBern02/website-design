@@ -20,7 +20,7 @@ export const Breadcrumb = ({
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex items-center gap-4 font-comfortaa text-[12px] tracking-wide"
+      className="flex items-center gap-4 font-comfortaa text-[12px] tracking-wide "
     >
       {showBackButton && (
         <button

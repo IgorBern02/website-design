@@ -1,5 +1,5 @@
 import { ProductSize } from "./ProductSize";
-import { ButtonsBuyAndFavorite } from "./ButtonsBuyAndFavorite";
+import { ButtonsBuyAndFavorite } from "./Buttons/ButtonsBuyAndFavorite";
 import { ProductDescription } from "./ProductDescription";
 import { Discount } from "./Discount";
 import type { Product } from "../../../../types/products";

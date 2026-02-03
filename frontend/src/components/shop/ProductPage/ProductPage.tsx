@@ -18,7 +18,7 @@ export const ProductPage = () => {
 
   return (
     <>
-      <section className="flex items-center gap-4 px-10 py-6 bg-white">
+      <section className="flex items-center gap-4 px-10 py-6 bg-gray-50">
         <Breadcrumb
           items={[{ label: "Home", href: "/" }, { label: "Product Details" }]}
         />
