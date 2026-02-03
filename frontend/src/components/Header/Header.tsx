@@ -1,5 +1,5 @@
 import { MenuHamburguer } from "./MenuHamburguer";
-import type { HeaderProps } from "./types";
+import type { HeaderProps } from "../../types/header";
 import { BagPurchase } from "./BagPurchase";
 
 export const Header = ({

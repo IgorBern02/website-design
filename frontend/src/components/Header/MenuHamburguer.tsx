@@ -1,4 +1,4 @@
-import type { MenuHamburguerProps } from "./types";
+import type { MenuHamburguerProps } from "../../types/header";
 
 export const MenuHamburguer = ({ isOpen, onToggle }: MenuHamburguerProps) => {
   return (
