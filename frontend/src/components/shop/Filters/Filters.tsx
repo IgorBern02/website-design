@@ -4,7 +4,7 @@ import type { FiltersProps } from "./types";
 
 export const Filters = ({ onSearch, onCategorySelect }: FiltersProps) => {
   return (
-    <section className="h-20 w-full flex items-center gap-4 relative">
+    <section className="h-20 w-full flex items-center gap-4 relative ">
       <CategoryDropdown onCategorySelect={onCategorySelect} />
       <SearchInput onSearch={onSearch} />
     </section>

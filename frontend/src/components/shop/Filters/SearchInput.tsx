@@ -8,7 +8,7 @@ export const SearchInput = ({ onSearch }: SearchInputProps) => {
         type="text"
         placeholder="Search"
         onChange={(e) => onSearch(e.target.value)}
-        className="w-full bg-gray-50 py-2 px-5 pr-10 rounded-full text-sm outline-none border border-transparent focus:border-gray-200"
+        className="w-full bg-gray-100 py-2 px-5 pr-10 rounded-full text-sm outline-none border border-transparent focus:border-gray-200"
       />
       <FontAwesomeIcon
         icon="magnifying-glass"

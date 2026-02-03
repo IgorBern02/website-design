@@ -12,7 +12,7 @@ export const CategoryDropdown = ({
     <div className="relative">
       <div
         onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-gray-500 text-sm cursor-pointer border border-transparent hover:border-gray-200 transition-all"
+        className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-gray-500 text-sm cursor-pointer border border-transparent hover:border-gray-200 transition-all"
       >
         <span>Categories</span>
         <FontAwesomeIcon

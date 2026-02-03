@@ -8,6 +8,7 @@ import { useState } from "react";
 import { NavSideBar } from "./components/ui/NavSideBar";
 import { FavoritePage } from "./pages/FavoritesPage";
 import { CartSidebar } from "./components/ui/CartSidebar";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,6 +34,10 @@ function App() {
           <Route path="/favorites" element={<FavoritePage />} />
         </Routes>
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
