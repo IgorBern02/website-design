@@ -11,6 +11,7 @@ type PurchaseContextType = {
   purchases: PurchaseItem[];
   togglePurchase: (item: PurchaseItem) => void;
   isPurchase: (id: string) => boolean;
+  removePurchase: (id: string) => void;
 };
 
 const PurchaseContext = createContext({} as PurchaseContextType);
@@ -32,8 +33,14 @@ export const PurchaseProvider = ({ children }: { children: ReactNode }) => {
     return purchases.some((fav) => fav.id === id);
   };
 
+  const removePurchase = (id: string) => {
+    setPurchases((prev) => prev.filter((item) => item.id !== id));
+  };
+
   return (
-    <PurchaseContext.Provider value={{ purchases, togglePurchase, isPurchase }}>
+    <PurchaseContext.Provider
+      value={{ purchases, togglePurchase, isPurchase, removePurchase }}
+    >
       {children}
     </PurchaseContext.Provider>
   );

@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { SidebarProps } from "../../types/header";
 import { usePurchase } from "../../context/PurchasesContext";
+import { Link } from "react-router-dom";
 
 export const CartSidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const { purchases } = usePurchase();
+  const { purchases, removePurchase } = usePurchase();
 
   return (
     <>
@@ -23,28 +24,44 @@ export const CartSidebar = ({ isOpen, onClose }: SidebarProps) => {
       >
         {purchases.length === 0 && (
           <p className="mt-24 flex items-center justify-center">
-            Nenhum item favoritado.
+            No items added
           </p>
         )}
 
         <div className="p-5 pt-24  flex-1 overflow-y-auto flex flex-col gap-6 text-xl font-comfortaa ">
           {purchases.map((item) => (
-            <section
+            <Link
+              to={`/product/${item.id}`}
               key={item.id}
               onClick={onClose}
-              className="w-full h-28 shrink-0 flex flex-col items-center gap-1 shadow-sm shadow-gray-300 rounded-lg overflow-hidden hover:bg-gray-100 transition-colors duration-300"
+              className="w-full h-34 shrink-0 flex flex-col items-center gap-1
+               shadow-sm shadow-gray-300 rounded-lg overflow-hidden
+               hover:bg-gray-100 transition-colors duration-300"
             >
               <div className="flex items-center justify-between w-full p-2">
-                <div className="bg-amber-300 p-8 rounded-lg"></div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-20 h-20 object-cover rounded-md"
+                />
+
                 <span className="text-sm">{item.title}</span>
                 <span className="text-sm font-bold">$ {item.price}</span>
               </div>
+
               <div className="w-full flex items-center justify-center">
-                <button className="text-sm p-1 cursor-pointer">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    removePurchase(item.id);
+                  }}
+                  className="text-sm p-1 cursor-pointer"
+                >
                   <FontAwesomeIcon icon="trash" />
                 </button>
               </div>
-            </section>
+            </Link>
           ))}
         </div>
         <div className="flex items-center justify-between p-2">

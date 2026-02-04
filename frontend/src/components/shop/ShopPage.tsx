@@ -33,7 +33,7 @@ export const ShopPage = () => {
       setVisibleCount(INITIAL_COUNT);
       document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" });
     } else {
-      setVisibleCount(filteredProducts.length); // 👈 aqui também é importante
+      setVisibleCount(filteredProducts.length);
     }
   };
 

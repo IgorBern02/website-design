@@ -6,7 +6,7 @@ export const HeroDescription = ({ scrollYProgress }: any) => {
   return (
     <motion.div
       style={{ opacity }}
-      className="absolute bottom-20 left-10 w-72 bg-white/90 p-6 z-20"
+      className="absolute bottom-20 left-10 w-72 bg-gray-50 p-6 z-20"
     >
       <p className="font-comfortaa text-xl font-bold">
         Clothes without excess. Only style.

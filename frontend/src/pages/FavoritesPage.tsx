@@ -1,8 +1,10 @@
 import { useFavorites } from "../../src/context/FavoritesContext";
 import { Breadcrumb } from "../components/ui/Breadcrumb";
+import { useNavigate } from "react-router-dom";
 
 export const FavoritePage = () => {
   const { favorites } = useFavorites();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -22,14 +24,17 @@ export const FavoritePage = () => {
           {favorites.map((item) => (
             <div
               key={item.id}
-              className="w-full h-full gap-2  p-5 flex flex-col items-center justify-center overflow-hidden rounded-2xl shadow-lg shadow-gray-500"
+              onClick={() => navigate(`/product/${item.id}`)}
+              className="w-full h-full gap-2 p-5 flex flex-col items-center justify-center
+               overflow-hidden rounded-2xl shadow-lg shadow-gray-500
+               cursor-pointer hover:scale-[1.02] transition"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-80 object-cover "
+                className="w-full h-80 object-cover"
               />
-              <div className="flex flex-col items-center justify-center bottom-0  w-full">
+              <div className="flex flex-col items-center justify-center w-full">
                 <h2>{item.title}</h2>
                 <p className="font-bold">$ {item.price}</p>
               </div>
