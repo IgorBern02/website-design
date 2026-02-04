@@ -1,25 +1,32 @@
 type AuthInputProps = {
   label: string;
-  type?: string;
+  type: string;
   value: string;
+  error?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const AuthInput = ({
   label,
-  type = "text",
+  type,
   value,
+  error,
   onChange,
 }: AuthInputProps) => {
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm text-neutral-400">{label}</label>
+    <div className="flex flex-col gap-1">
+      <label className="text-sm">{label}</label>
+
       <input
         type={type}
         value={value}
         onChange={onChange}
-        className="bg-neutral-900 border border-neutral-700 px-4 py-3 text-sm outline-none focus:border-white transition"
+        className={`p-3 bg-neutral-900 border ${
+          error ? "border-red-500" : "border-neutral-700"
+        } outline-none`}
       />
+
+      {error && <span className="text-red-500 text-xs">{error}</span>}
     </div>
   );
 };

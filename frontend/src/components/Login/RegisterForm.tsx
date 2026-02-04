@@ -1,15 +1,30 @@
 import { useState } from "react";
 import { AuthInput } from "./AuthInput";
+import { validateAuth } from "../../utils/validators";
 
 export const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    password?: string;
+  }>({});
+
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ name, email, password });
-    // depois aqui entra a chamada da API
+    const validationErrors = validateAuth({
+      name,
+      email,
+      password,
+    });
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) return;
+
+    console.log("register ok");
   };
 
   return (
@@ -22,6 +37,8 @@ export const RegisterForm = () => {
       <AuthInput
         label="Name"
         value={name}
+        type="text"
+        error={errors.name}
         onChange={(e) => setName(e.target.value)}
       />
 
@@ -29,6 +46,7 @@ export const RegisterForm = () => {
         label="Email"
         type="email"
         value={email}
+        error={errors.email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
@@ -36,10 +54,11 @@ export const RegisterForm = () => {
         label="Password"
         type="password"
         value={password}
+        error={errors.password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button className="mt-4 bg-white text-black py-3 font-bold text-sm uppercase">
+      <button className="mt-4 bg-white text-black py-3 font-bold text-sm uppercase cursor-pointer">
         Register
       </button>
     </form>

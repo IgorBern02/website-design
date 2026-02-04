@@ -15,11 +15,11 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/favorites" element={<FavoritePage />} />
-        <Route path="/login" element={<AuthPage />} />
       </Route>
 
       {/* Rotas FULLSCREEN */}
       <Route path="/auth" element={<AuthPage />} />
+      <Route path="/login" element={<AuthPage />} />
     </Routes>
   );
 }
