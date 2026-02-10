@@ -1,22 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  useFavorites,
-  type FavoriteItem,
-} from "../../../../../context/FavoritesContext";
+import { useFavorites } from "../../../../../context/FavoritesContext";
+import type { Product } from "../../../../../types/products";
 
-type ButtonFavoriteProps = {
-  item: FavoriteItem;
+type Props = {
+  product: Product;
 };
 
-export const ButtonFavorite = ({ item }: ButtonFavoriteProps) => {
+export const ButtonFavorite = ({ product }: Props) => {
   const { toggleFavorite, isFavorite } = useFavorites();
 
-  const liked = isFavorite(item.id);
+  const liked = isFavorite(product.id);
 
   return (
     <FontAwesomeIcon
       icon={liked ? ["fas", "heart"] : ["far", "heart"]}
-      onClick={() => toggleFavorite(item)}
+      onClick={() => toggleFavorite(product)}
       className="text-xl text-gray-700 p-4 cursor-pointer rounded-full hover:bg-gray-100 ml-4 shadow-sm shadow-gray-300"
     />
   );

@@ -1,24 +1,22 @@
-import {
-  usePurchase,
-  type PurchaseItem,
-} from "../../../../../context/PurchasesContext";
+import { useCart } from "../../../../../context/CartContext";
+import type { Product } from "../../../../../types/products";
 
-type ButtonBuyProps = {
-  text: String;
-  item: PurchaseItem;
+type Props = {
+  product: Product;
 };
 
-export const ButtonAddToCart = ({ text, item }: ButtonBuyProps) => {
-  const { togglePurchase, isPurchase } = usePurchase();
-  const purchased = isPurchase(item.id);
+export const ButtonAddToCart = ({ product }: Props) => {
+  const { addToCart, isInCart } = useCart();
+
+  const inCart = isInCart(product.id);
 
   return (
     <button
-      onClick={() => togglePurchase(item)}
-      disabled={purchased}
-      className="w-full border rounded-2xl text-black px-10 py-4 font-comfortaa text-sm hover:bg-gray-100 transition cursor-pointer "
+      onClick={() => addToCart(product)}
+      disabled={inCart}
+      className="w-full border rounded-2xl text-black px-10 py-4 font-comfortaa text-sm hover:bg-gray-100 transition cursor-pointer"
     >
-      {text}
+      {inCart ? "In cart" : "Add to cart"}
     </button>
   );
 };

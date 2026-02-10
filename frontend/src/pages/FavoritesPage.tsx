@@ -30,12 +30,12 @@ export const FavoritePage = () => {
                cursor-pointer hover:scale-[1.02] transition"
             >
               <img
-                src={item.image}
-                alt={item.title}
+                src={item.imageUrl}
+                alt={item.name}
                 className="w-full h-80 object-cover"
               />
               <div className="flex flex-col items-center justify-center w-full">
-                <h2>{item.title}</h2>
+                <h2>{item.name}</h2>
                 <p className="font-bold">$ {item.price}</p>
               </div>
             </div>

@@ -1,16 +1,16 @@
+import type { Product } from "../../../../../types/products";
 import { ButtonAddToCart } from "./ButtonAddToCart";
 import { ButtonFavorite } from "./ButtonFavorite";
-import type { FavoriteItem } from "../../../../../context/FavoritesContext";
 
 type Props = {
-  item: FavoriteItem;
+  product: Product;
 };
 
-export const ButtonsBuyAndFavorite = ({ item }: Props) => {
+export const ButtonsBuyAndFavorite = ({ product }: Props) => {
   return (
     <div className="flex justify-between items-center">
-      <ButtonAddToCart item={item} text="Add to cart" />
-      <ButtonFavorite item={item} />
+      <ButtonAddToCart product={product} />
+      <ButtonFavorite product={product} />
     </div>
   );
 };

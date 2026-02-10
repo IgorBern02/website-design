@@ -1,40 +1,75 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-
-export type FavoriteItem = {
-  id: string;
-  title: string;
-  price: number;
-  image: string;
-};
+import { createContext, useContext, useEffect, useState } from "react";
+import type { Product } from "../types/products";
+import { API } from "../services/api";
 
 type FavoritesContextType = {
-  favorites: FavoriteItem[];
-  toggleFavorite: (item: FavoriteItem) => void;
+  favorites: Product[];
   isFavorite: (id: string) => boolean;
+  toggleFavorite: (item: Product) => Promise<void>;
+  reloadFavorites: () => Promise<void>;
 };
 
 const FavoritesContext = createContext({} as FavoritesContextType);
 
-export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
+export const FavoritesProvider = ({ children }: any) => {
+  const [favorites, setFavorites] = useState<Product[]>([]);
 
-  const toggleFavorite = (item: FavoriteItem) => {
-    setFavorites((prev) => {
-      const exists = prev.find((fav) => fav.id === item.id);
-      if (exists) {
-        return prev.filter((fav) => fav.id !== item.id);
-      }
-      return [...prev, item];
+  const loadFavorites = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setFavorites([]);
+      return;
+    }
+
+    const res = await fetch(`${API}/favorites`, {
+      headers: { Authorization: `Bearer ${token}` },
     });
+
+    const { favorites } = await res.json();
+
+    const mapped: Product[] = favorites.map((f: any) => ({
+      id: f.product._id,
+      name: f.product.name,
+      imageUrl: f.product.imageUrl,
+      price: f.product.price,
+    }));
+
+    setFavorites(mapped);
   };
 
-  const isFavorite = (id: string) => {
-    return favorites.some((fav) => fav.id === id);
+  useEffect(() => {
+    loadFavorites();
+  }, []);
+
+  const isFavorite = (id: string) => favorites.some((fav) => fav.id === id);
+
+  const toggleFavorite = async (item: Product) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    if (isFavorite(item.id)) {
+      await fetch(`${API}/favorites/${item.id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } else {
+      await fetch(`${API}/favorites/${item.id}`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    }
+
+    await loadFavorites(); // 🔥 sincroniza com o banco sempre
   };
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, toggleFavorite, isFavorite }}
+      value={{
+        favorites,
+        isFavorite,
+        toggleFavorite,
+        reloadFavorites: loadFavorites,
+      }}
     >
       {children}
     </FavoritesContext.Provider>

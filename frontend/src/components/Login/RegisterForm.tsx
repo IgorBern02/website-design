@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AuthInput } from "./AuthInput";
 import { validateAuth } from "../../utils/validators";
+import { useAuth } from "../../context/AuthContext";
 
 export const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -13,18 +14,41 @@ export const RegisterForm = () => {
     password?: string;
   }>({});
 
-  const handleRegister = (e: React.FormEvent) => {
+  const { login } = useAuth();
+
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const validationErrors = validateAuth({
       name,
       email,
       password,
     });
+
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) return;
 
-    console.log("register ok");
+    try {
+      const res = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message);
+        return;
+      }
+
+      login(data.token, data.user);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

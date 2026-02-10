@@ -6,16 +6,19 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./lib/fontawesome";
 import { FavoritesProvider } from "./context/FavoritesContext";
-import { PurchaseProvider } from "./context/PurchasesContext";
+import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <PurchaseProvider>
-        <FavoritesProvider>
-          <App />
-        </FavoritesProvider>
-      </PurchaseProvider>
+      <AuthProvider>
+        <CartProvider>
+          <FavoritesProvider>
+            <App />
+          </FavoritesProvider>
+        </CartProvider>
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 );

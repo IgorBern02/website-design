@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { AuthInput } from "./AuthInput";
 import { validateAuth } from "../../utils/validators";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { API } from "../../services/api";
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,7 +15,9 @@ export const LoginForm = () => {
     {},
   );
 
-  const handleLogin = (e: React.FormEvent) => {
+  const { login } = useAuth();
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const validationErrors = validateAuth({ email, password });
@@ -18,7 +25,24 @@ export const LoginForm = () => {
 
     if (Object.keys(validationErrors).length > 0) return;
 
-    console.log("login ok");
+    const res = await fetch(`${API}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      alert(err.message);
+      return;
+    }
+
+    const data = await res.json();
+
+    // salva no contexto
+    login(data.token, data.user);
+
+    navigate("/");
   };
 
   return (
