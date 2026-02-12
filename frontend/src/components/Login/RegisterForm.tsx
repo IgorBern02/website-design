@@ -2,11 +2,13 @@ import { useState } from "react";
 import { AuthInput } from "./AuthInput";
 import { validateAuth } from "../../utils/validators";
 import { useAuth } from "../../context/AuthContext";
+import { API } from "../../services/api";
 
 export const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState("");
 
   const [errors, setErrors] = useState<{
     name?: string;
@@ -30,7 +32,7 @@ export const RegisterForm = () => {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/register", {
+      const res = await fetch(`${API}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,14 +40,17 @@ export const RegisterForm = () => {
         body: JSON.stringify({ name, email, password }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
-        alert(data.message);
+        const text = await res.text();
+        console.error("Erro da API:", text);
+        alert("Erro ao registrar");
         return;
       }
 
+      const data = await res.json();
+
       login(data.token, data.user);
+      setSuccess("Conta criada com sucesso!");
     } catch (error) {
       console.error(error);
     }
@@ -85,6 +90,18 @@ export const RegisterForm = () => {
       <button className="mt-4 bg-white text-black py-3 font-bold text-sm uppercase cursor-pointer">
         Register
       </button>
+
+      {errors.name && (
+        <span className="text-red-500 text-xs">{errors.name}</span>
+      )}
+      {errors.email && (
+        <span className="text-red-500 text-xs">{errors.email}</span>
+      )}
+      {errors.password && (
+        <span className="text-red-500 text-xs">{errors.password}</span>
+      )}
+
+      {success && <span className="text-green-500 text-sm">{success}</span>}
     </form>
   );
 };
